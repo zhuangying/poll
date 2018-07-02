@@ -1,4 +1,4 @@
-package com.briup.apps.poll.dao;
+  package com.briup.apps.poll.dao;
 
 import com.briup.apps.poll.bean.Question;
 import com.briup.apps.poll.bean.QuestionExample;

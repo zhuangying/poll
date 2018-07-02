@@ -21,7 +21,7 @@ public class CourseServiceImpl implements ICourseService {
 		// 创建一个空模板
 		CourseExample example = new CourseExample();
 		// 调用ＱＢＥ查询，并且将查询结果返回
-		return courseMapper.selectByExample(example);
+		return courseMapper.selectByExampleWithBLOBs(example);
 	}
 
 	@Override
@@ -29,7 +29,7 @@ public class CourseServiceImpl implements ICourseService {
 		CourseExample example = new CourseExample();
 		// 创建模板 并在模板中创建模糊查询的条件
 		example.createCriteria().andNameLike(keywords);
-		return courseMapper.selectByExample(example);
+		return courseMapper.selectByExampleWithBLOBs(example);
 	}
 
 	@Override

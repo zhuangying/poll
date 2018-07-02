@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.briup.apps.poll.dao.extend.ClazzVMMapper">
+  <!-- //因为里面有接口不可以使用resultType，而要使用一个下面定义的reslutMap来接收返回值  -->
+  <select id="selectAll" resultMap="ClazzVMReslutMap">
+  select * from poll_clazz
+  <!-- id name description grade_id charge_id -->
+  </select>
+  <resultMap type="com.briup.apps.poll.bean.extend.ClazzVM" id="ClazzVMReslutMap">
+  <!--//id代表组件，result代表普通列，association代表关系列 -->
+  <id column="id" property="id"/>  <!--//组件-->
+  <result column="name" property="name"/><!--//关系列，property类里的属性 -->
+  <result column="description" property="description"/>
+  <association  
+    column="grade_id" 
+    select="com.briup.apps.poll.dao.GradeMapper.selectByPrimaryKey"
+    property ="grade"> <!--//返回值类型 -->  <!--//指定属性 --> <!--//查找 -->
+   </association>
+   <association
+     column="charge_id"
+     select="com.briup.apps.poll.dao.UserMapper.selectByPrimaryKey"
+     property="charge">
+   </association>
+   
+  </resultMap>
+</mapper>
